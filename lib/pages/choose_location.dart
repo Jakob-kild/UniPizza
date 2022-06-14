@@ -50,7 +50,10 @@ class _ChooseLocationState extends State<ChooseLocation> {
                 child: InkWell(
                   splashColor: Colors.red.withAlpha(30),
                   onTap: () {
-                    //updateTime(index);
+                    Navigator.pushNamed(context, '/detail', arguments: {
+                      "name" : pizzarias[index].values.elementAt(0),
+                      "rating": pizzarias[index].values.elementAt(1),
+                    });
                   },
                   child: Container(
 
