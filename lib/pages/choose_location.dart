@@ -39,6 +39,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
         backgroundColor: Colors.blue[900],
         title: Text('Choose a Location'),
         centerTitle: true,
+
         elevation: 0,
       ),
       body: ListView.builder(
