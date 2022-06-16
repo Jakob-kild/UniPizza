@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:world_time_app/classes/world_time.dart';
+
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
@@ -9,6 +9,7 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  /*
   void setupWorldTime() async {
     WorldTime instance = WorldTime(location: 'Berlin', flag: 'germany.png', url: 'Europe/Berlin');
     await instance.getTime();
@@ -19,11 +20,12 @@ class _LoadingState extends State<Loading> {
       'isDaytime': instance.isDaytime
     });
   }
+*/
 
   @override
   void initState() {
     super.initState();
-    setupWorldTime();
+    //setupWorldTime();
   }
 
   @override

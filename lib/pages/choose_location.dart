@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:world_time_app/classes/world_time.dart';
 
 class ChooseLocation extends StatefulWidget {
   @override
