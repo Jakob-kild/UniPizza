@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:world_time_app/classes/Pizzaria.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'
 
 class Loading extends StatefulWidget {
   @override
@@ -19,6 +20,10 @@ class _LoadingState extends State<Loading> {
       'isDaytime': instance.isDaytime
     });
   }*/
+  Future<void> init() async {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
 
 
