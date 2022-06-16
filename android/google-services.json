@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1004857907450",
+    "project_id": "unipizza-database",
+    "storage_bucket": "unipizza-database.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1004857907450:android:acb80e5a27747ca7635143",
+        "android_client_info": {
+          "package_name": "fire.studios.uni_pizza"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1004857907450-sblb1237gle00pdtu42754uk08gu0ihe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2k7GlfVyQ0AF8pT0YOsiGixqIFDQFTAI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1004857907450-sblb1237gle00pdtu42754uk08gu0ihe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

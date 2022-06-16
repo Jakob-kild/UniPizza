@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:world_time_app/classes/world_time.dart';
 
 class ChooseLocation extends StatefulWidget {
   @override
@@ -14,18 +13,6 @@ class _ChooseLocationState extends State<ChooseLocation> {
     {"Navn": "Kongens Pizza Lyngby","Rating":"3.5/5"}
   ];
 
-  /*
-  void updateTime(index) async {
-    WorldTime instance = pizzarias[index];
-    await instance.getTime();
-    Navigator.pop(context, {
-      'location': instance.location,
-      'time': instance.time,
-      'flag': instance.flag,
-      'isDaytime': instance.isDaytime,
-    });
-  }*/
-
   @override
   void initState() {
     super.initState();
@@ -37,7 +24,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
-        title: Text('Choose a Location'),
+        title: Text('Home'),
         centerTitle: true,
         elevation: 0,
       ),
