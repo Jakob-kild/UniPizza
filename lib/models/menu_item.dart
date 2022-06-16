@@ -4,14 +4,15 @@ class MenuItem extends Equatable{
   final int id;
   final int restaurantId;
   final String name;
+  final String category;
   final String description;
   final double price;
 
-  MenuItem({this.id, this.restaurantId, this.name, this.description, this.price});
+  MenuItem({this.category,this.id, this.restaurantId, this.name, this.description, this.price});
 
   @override
   // TODO: implement props
-  List<Object> get props => [id,
+  List<Object> get props => [id,category,
   restaurantId,
   name,
   description,
@@ -22,6 +23,7 @@ class MenuItem extends Equatable{
       id: 1,
       restaurantId: 1,
       name: 'Margherita',
+      category: 'Pizza',
       description: 'Tomatoes, mozzarella, basil',
       price: 4.99,
     ),
@@ -29,6 +31,7 @@ class MenuItem extends Equatable{
       id: 2,
       restaurantId: 1,
       name: '4 Formaggi',
+      category: 'Pizza',
       description: 'Tomatoes, mozzarella, basil',
       price: 4.99,
     ),
@@ -36,6 +39,31 @@ class MenuItem extends Equatable{
       id: 3,
       restaurantId: 1,
       name: 'Baviera',
+      category: 'Pizza',
+      description: 'Tomatoes, mozzarella, basil',
+      price: 4.99,
+    ),
+    MenuItem(
+      id: 3,
+      restaurantId: 1,
+      name: 'Baviera',
+      category: 'Pizza',
+      description: 'Tomatoes, mozzarella, basil',
+      price: 4.99,
+    ),
+    MenuItem(
+      id: 3,
+      restaurantId: 2,
+      name: 'Baviera',
+      category: 'Pizza',
+      description: 'Tomatoes, mozzarella, basil',
+      price: 4.99,
+    ),
+    MenuItem(
+      id: 3,
+      restaurantId: 2,
+      name: 'Baviera',
+      category: 'Pizza',
       description: 'Tomatoes, mozzarella, basil',
       price: 4.99,
     ),
@@ -50,13 +78,15 @@ class MenuItem extends Equatable{
       id: 5,
       restaurantId: 1,
       name: 'Coca Cola',
+      category: 'Drink',
       description: 'A fresh drink',
       price: 1.99,
     ),
     MenuItem(
-      id: 6,
+      id: 1,
       restaurantId: 1,
       name: 'Coca Cola',
+      category: 'Drink',
       description: 'A fresh drink',
       price: 1.99,
     ),
@@ -64,6 +94,7 @@ class MenuItem extends Equatable{
       id: 7,
       restaurantId: 2,
       name: 'Coca Cola',
+      category: 'Drink',
       description: 'A fresh drink',
       price: 1.99,
     ),
@@ -71,6 +102,7 @@ class MenuItem extends Equatable{
       id: 8,
       restaurantId: 3,
       name: 'Water',
+      category: 'Drink',
       description: 'A fresh drink',
       price: 1.99,
     ),
