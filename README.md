@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # uni_pizzas
+=======
+# uni_pizza
+>>>>>>> PizzaMenus
 
 A new Flutter project.
 

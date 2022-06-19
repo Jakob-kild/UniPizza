@@ -2,6 +2,7 @@
     package="com.example.unipizza.uni_pizzas">
    <application
         android:label="uni_pizzas"
+
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

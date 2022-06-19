@@ -17,8 +17,6 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final restaurant = ModalRoute
@@ -70,6 +68,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                       .of(context)
                       .size
                       .width, 50),
+
                 ),
                 image: DecorationImage(
                     image: NetworkImage(
@@ -133,15 +132,6 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                 },
               ),
             ),
-            ListView.builder(
-              padding: EdgeInsets.zero,
-              physics: NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: restaurant.tags.length,
-              itemBuilder: (context, index) {
-                return _buildMenuItems(restaurant, context, index);
-              },
-            )
           ]
           ,
         )
@@ -153,6 +143,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 }
 
 
+
 Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
   int getIndexOf(String name, MenuItemDetail menuItem){
     for (int i = 0; i < menuItem.pizzaria.keys.length; i++) {
@@ -162,7 +153,6 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
     };
     return 0;
   }
-
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -170,6 +160,7 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Text(
           restaurant.tags[index],
+
           style: Theme
               .of(context)
               .textTheme

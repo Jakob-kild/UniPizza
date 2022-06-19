@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import '../models/models.dart';
+import '../models/menu_item.dart';
 
 class Restaurant extends Equatable{
   final int id;
