@@ -74,6 +74,7 @@ class RestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
 
   const RestaurantCard({Key key, this.restaurant}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
