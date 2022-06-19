@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "776801821070",
+    "project_id": "unipizzas-17581",
+    "storage_bucket": "unipizzas-17581.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776801821070:android:9aa8066d2aa3a078f784df",
+        "android_client_info": {
+          "package_name": "com.example.unipizza.uni_pizzas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776801821070-8ne81krj1vnnof69ck6f2f96n076h130.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyXS29dkhpMbZnyzd_Y7ZM8b0Q4tqhdpw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776801821070-8ne81krj1vnnof69ck6f2f96n076h130.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

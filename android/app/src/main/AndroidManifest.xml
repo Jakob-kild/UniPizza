@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fire.studios.uni_pizza">
+    package="com.example.unipizza.uni_pizzas">
    <application
-        android:label="uni_pizza"
+        android:label="uni_pizzas"
+
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
