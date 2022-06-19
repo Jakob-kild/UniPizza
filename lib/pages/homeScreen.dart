@@ -42,9 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: Restaurant.restaurants.length,
+            itemCount: Pizzaria.restaurants.length,
             itemBuilder: (context, index) {
-              return RestaurantCard(restaurant: Restaurant.restaurants[index]);
+              return PizzariaCard(restaurant: Pizzaria.restaurants[index]);
             },
           ),
         ],
@@ -72,10 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class RestaurantCard extends StatelessWidget {
-  final Restaurant restaurant;
+class PizzariaCard extends StatelessWidget {
+  final Pizzaria restaurant;
 
-  const RestaurantCard({Key key, this.restaurant}) : super(key: key);
+  const PizzariaCard({Key key, this.restaurant}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -163,10 +163,6 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {},
-          ),
           centerTitle: false,
           title:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -175,7 +171,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
               style:
                   DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.0),
             ),
-            Text('Virum, Danmark')
+            Text('DTU, Lyngby')
           ])),
       body: Container(),
     );

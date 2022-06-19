@@ -16,7 +16,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final restaurant = ModalRoute.of(context).settings.arguments as Restaurant;
+    final restaurant = ModalRoute.of(context).settings.arguments as Pizzaria;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -60,7 +60,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                     fit: BoxFit.cover),
               ),
             ),
-            RestaurantInformation(restaurant: restaurant),
+            PizzariaInfo(pizzaria: restaurant),
             ListView.builder(
               padding: EdgeInsets.zero,
               physics: NeverScrollableScrollPhysics(),
@@ -77,7 +77,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
   }
 }
 
-Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
+Widget _buildMenuItems(Pizzaria restaurant, BuildContext context, int index) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -126,21 +126,21 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
   );
 }
 
-class RestaurantInformation extends StatelessWidget {
-  final Restaurant restaurant;
+class PizzariaInfo extends StatelessWidget {
+  final Pizzaria pizzaria;
 
-  const RestaurantInformation({Key key, this.restaurant}) : super(key: key);
+  const PizzariaInfo({Key key, this.pizzaria}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 148, vertical: 10),
       child: Column(
         children: [
-          Text(restaurant.name,
+          Text(pizzaria.name,
               style: Theme.of(context).textTheme.headline3.copyWith(
-                    color: Theme.of(context).accentColor,
+                    color: Colors.red,
                   ))
         ],
       ),

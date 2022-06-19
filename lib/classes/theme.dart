@@ -22,17 +22,17 @@ ThemeData theme() {
     fontFamily: 'Futura',
     textTheme: TextTheme(
       headline1: TextStyle(
-        color: Color(0xFF2b2e4a),
+        color: Color(0xffec0e0e),
         fontWeight: FontWeight.bold,
         fontSize: 36,
       ),
       headline2: TextStyle(
-        color: Color(0xFF2b2e4a),
+        color: Color(0xffec0e0e),
         fontWeight: FontWeight.bold,
         fontSize: 24,
       ),
       headline3: TextStyle(
-        color: Color(0xFF2b2e4a),
+        color: Color(0xffec0e0e),
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
