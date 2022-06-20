@@ -9,8 +9,8 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  var _latitude = "";
-  var _longitude = "";
+  String _latitude;
+  String _longitude;
 
   double calculateDistance(lat1, lon1, lat2, lon2){
     var p = 0.017453292519943295;
@@ -63,7 +63,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   static const _initalCameraPosition = CameraPosition(
-    target: LatLng(55.7856,12.5214),
+    target: LatLng(55.768860,12.505070),
     zoom: 14,
   );
 

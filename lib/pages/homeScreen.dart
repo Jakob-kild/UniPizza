@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   @override
   void initState() {

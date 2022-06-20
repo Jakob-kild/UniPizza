@@ -79,7 +79,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
             OutlinedButton(
                 onPressed: () {
                   FirebaseFirestore.instance
-                      .collection("testing")
+                      .collection("${restaurant.name}")
                       .add({"comment": myController.text});
                   myController.clear();
                   FocusManager.instance.primaryFocus.unfocus();
@@ -90,7 +90,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
               height: 150,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
-                    .collection("testing")
+                    .collection("${restaurant.name}")
                     .snapshots(),
                 builder: (
                   context,
@@ -140,15 +140,6 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 }
 
 Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
-  int getIndexOf(String name, MenuItemDetail menuItem) {
-    for (int i = 0; i < menuItem.pizzaria.keys.length; i++) {
-      if (menuItem.pizzaria.keys.elementAt(i) == name) {
-        return i;
-      }
-    }
-    ;
-    return 0;
-  }
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,7 +174,7 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                  '\$${menuItem.pizzaria.values.elementAt(getIndexOf(restaurant.name, menuItem))}',
+                                  '${menuItem.price.toInt()} kr',
                                   style: Theme.of(context).textTheme.headline5),
                             ],
                           ),
@@ -202,7 +193,18 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
 class RestaurantInformation extends StatelessWidget {
   final Restaurant restaurant;
 
+
   const RestaurantInformation({Key key, this.restaurant}) : super(key: key);
+
+  String getDiscountString(Restaurant restaurant){
+    var builder = StringBuffer();
+
+    for (String n in restaurant.discounts){
+      builder.write("- " + n + "\n");
+    }
+
+    return builder.toString();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -228,24 +230,24 @@ class RestaurantInformation extends StatelessWidget {
                 Text("Tilbud",
                   style: Theme.of(context).textTheme.headline5, ),
                 SizedBox(height: 5,),
-                Text("- Gratis levering til DTU \n- Gratis drikkevarer for over 300kr",
+                Text(getDiscountString(restaurant),
                     style: Theme.of(context).textTheme.bodyText1),
-                SizedBox(height: 10,),
                 Text("Rating",
                   style: Theme.of(context).textTheme.headline5,),
                 SizedBox(height: 5,),
                 //Rating widget
+                Text("${restaurant.rating}/5.0"),
                 SizedBox(height: 10,),
                 Text("Leveringstid",
                   style: Theme.of(context).textTheme.headline5,),
                 SizedBox(height: 5,),
-                Text("20-35 minutter",
+                Text("10-15 minutter",
                     style: Theme.of(context).textTheme.bodyText1),
                 SizedBox(height: 10,),
                 Text("Kontakt",
                   style: Theme.of(context).textTheme.headline5,),
                 SizedBox(height: 5,),
-                Text("+45 92 15 69 69 \nGammel Jernbanevej 20, 2800 Kongens Lyngby",
+                Text("${restaurant.tlf} \n${restaurant.streetName}",
                     style: Theme.of(context).textTheme.bodyText1),
               ],
             ),
@@ -258,3 +260,5 @@ class RestaurantInformation extends StatelessWidget {
     );
   }
 }
+
+
