@@ -31,7 +31,7 @@ ThemeData theme() {
         fontSize: 24,
       ),
       headline3: TextStyle(
-        color: Color(0xFF2b2e4a),
+        color: Color(0xFFe84545),
         fontWeight: FontWeight.bold,
         fontSize: 18,
       ),
