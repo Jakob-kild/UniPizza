@@ -1,5 +1,4 @@
 import 'package:uni_pizzas/pages/maps.dart';
-
 import 'classes/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,6 @@ void main() async {
   runApp(MaterialApp(theme: theme(), initialRoute: '/', routes: {
     '/': (context) => HomeScreen(),
     '/home': (context) => RestaurantDetailsScreen(),
-    '/map' : (context) => MapScreen()
-  }));
+    '/map' : (context) => MapScreen(),
+  },));
 }
