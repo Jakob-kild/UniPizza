@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../classes/restaurant.dart';
-import 'ExamplepageMAP.dart';
+import 'maps.dart';
 import 'ExamplepageSEARCH.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,9 +16,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
   final pages = [
-    map(),
-    search(),
+    MapScreen(),
     menuScreen(),
+    search(),
+
   ];
 
   @override

@@ -175,12 +175,6 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: Text('Map\n$_latitude $_longitude'),
-        centerTitle: true,
-        elevation: 0,
-      ),
       body: GoogleMap(
         zoomControlsEnabled: true,
         myLocationButtonEnabled: false,
