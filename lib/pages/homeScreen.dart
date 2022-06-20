@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../classes/restaurant.dart';
+import 'ExamplepageMAP.dart';
+import 'ExamplepageSEARCH.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -7,67 +9,65 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int pageIndex = 0;
+
   @override
   void initState() {
     super.initState();
   }
 
-  int _selectedIndex = 0;
+  final pages = [
+    menuScreen(),
+    map(),
+    search(),
+  ];
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: SingleChildScrollView(
-          child: Column(
-        mainAxisSize: MainAxisSize.min,
+      body: pages[pageIndex],
+      bottomNavigationBar: CustomNavigationBar(context),
+    );
+  }
+
+
+  Container CustomNavigationBar(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Pizzeriaer',
-                  style: Theme.of(context).textTheme.headline4,
-                )),
+          IconButton(
+              onPressed: () {
+                setState(() {
+                  pageIndex = 1;
+                });
+              },
+              icon: const Icon(Icons.location_on)
           ),
-          ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: Restaurant.restaurants.length,
-            itemBuilder: (context, index) {
-              return RestaurantCard(restaurant: Restaurant.restaurants[index]);
+          IconButton(
+            onPressed: () {
+              setState(() {
+                pageIndex = 0;
+              });
+
             },
+            icon: const Icon(Icons.home),
+          ),
+          IconButton(
+            onPressed: () {
+              setState(() {
+                pageIndex = 2;
+              });
+            },
+            icon: const Icon(Icons.search),
           ),
         ],
-      )),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white10,
-        elevation: 0,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.location_on),
-            label: 'Map',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
-          ),
-        ],
-        currentIndex: _selectedIndex,
       ),
     );
   }
+
 }
 
 class RestaurantCard extends StatelessWidget {
@@ -88,7 +88,10 @@ class RestaurantCard extends StatelessWidget {
           children: [
             Stack(children: [
               Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 150,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
@@ -110,7 +113,10 @@ class RestaurantCard extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         '${restaurant.deliveryTime} min',
-                        style: Theme.of(context).textTheme.bodyText1,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .bodyText1,
                       ),
                     )),
               )
@@ -121,27 +127,41 @@ class RestaurantCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(restaurant.name,
-                      style: Theme.of(context).textTheme.headline5),
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headline5),
                   SizedBox(height: 5),
 
                   // Text('${restaurant.tags}'),
                   Row(
                       children: restaurant.tags
                           .map(
-                            (tag) => restaurant.tags.indexOf(tag) ==
-                                    restaurant.tags.length - 1
-                                ? Text(tag,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1)
-                                : Text('$tag, ',
-                                    style:
-                                        Theme.of(context).textTheme.bodyText1),
-                          )
+                            (tag) =>
+                        restaurant.tags.indexOf(tag) ==
+                            restaurant.tags.length - 1
+                            ? Text(tag,
+                            style:
+                            Theme
+                                .of(context)
+                                .textTheme
+                                .bodyText1)
+                            : Text('$tag, ',
+                            style:
+                            Theme
+                                .of(context)
+                                .textTheme
+                                .bodyText1),
+                      )
                           .toList()),
                   SizedBox(height: 5),
                   Text(
-                      '${restaurant.distance}km -\$${restaurant.deliveryFee} delivery fee',
-                      style: Theme.of(context).textTheme.bodyText1)
+                      '${restaurant.distance}km -\$${restaurant
+                          .deliveryFee} delivery fee',
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .bodyText1)
                 ],
               ),
             ),
@@ -167,11 +187,14 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           ),
           centerTitle: false,
           title:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               'CURRENT LOCATION',
               style:
-                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.0),
+              DefaultTextStyle
+                  .of(context)
+                  .style
+                  .apply(fontSizeFactor: 1.0),
             ),
             Text('Virum, Danmark')
           ])),
@@ -182,3 +205,45 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(56);
 }
+
+class menuScreen extends StatefulWidget {
+
+  @override
+  State<menuScreen> createState() => _menuScreenState();
+}
+
+class _menuScreenState extends State<menuScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Pizzeriaer',
+                      style: Theme
+                          .of(context)
+                          .textTheme
+                          .headline4,
+                    )),
+              ),
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: Restaurant.restaurants.length,
+                itemBuilder: (context, index) {
+                  return RestaurantCard(
+                      restaurant: Restaurant.restaurants[index]);
+                },
+              ),
+            ],
+          )),
+    );
+  }
+}
+
