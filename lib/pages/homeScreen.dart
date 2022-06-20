@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../classes/restaurant.dart';
 import 'maps.dart';
-import 'ExamplepageSEARCH.dart';
+import 'pizzaSearch.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
