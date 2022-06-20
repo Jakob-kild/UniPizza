@@ -105,7 +105,7 @@ class RestaurantCard extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        '${restaurant.deliveryTime} min',
+                        '${restaurant.rating}/5 \u{2B50}',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     )),
@@ -136,7 +136,7 @@ class RestaurantCard extends StatelessWidget {
                           .toList()),
                   SizedBox(height: 5),
                   Text(
-                      '${restaurant.distance}km -\$${restaurant.deliveryFee} delivery fee',
+                      '${restaurant.distance}km - ${restaurant.deliveryFee.toInt()} kr levering',
                       style: Theme.of(context).textTheme.bodyText1)
                 ],
               ),
@@ -180,7 +180,7 @@ class _menuScreenState extends State<menuScreen> {
             physics: NeverScrollableScrollPhysics(),
             itemCount: Restaurant.restaurants.length,
             itemBuilder: (context, index) {
-              return RestaurantCard(restaurant: Restaurant.restaurants[index]);
+              return RestaurantCard(restaurant: Restaurant.getSortedResturants()[index]);
             },
           ),
         ],

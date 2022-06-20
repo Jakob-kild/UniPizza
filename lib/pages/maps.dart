@@ -63,7 +63,7 @@ class _MapScreenState extends State<MapScreen> {
   }
 
   static const _initalCameraPosition = CameraPosition(
-    target: LatLng(55.768860,12.505070),
+    target: LatLng(55.785747, 12.521015),
     zoom: 14,
   );
 
@@ -71,35 +71,6 @@ class _MapScreenState extends State<MapScreen> {
 
   List<Marker> _marker =[];
   static const List<Marker> _list = [
-    Marker(
-      markerId: MarkerId('1'),
-      position: LatLng(55.768860,12.505070),
-        infoWindow: InfoWindow(
-        title: 'Pizzeria Luca',
-        snippet: 'Gammel Jernbanevej 20,\n2800 Kongens Lyngby',
-          //snippet: '${calculateDistance(_latitude, _longitude, 55.768860, 12.505070)}',
-          //snippet: '$Id1',
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ),
-    Marker(
-      markerId: MarkerId('2'),
-      position: LatLng(55.797050,12.523720),
-      infoWindow: InfoWindow(
-          title: 'Lyngby Pizza',
-          snippet: 'Lundtoftevej 197,\n2800 Kongens Lyngby'
-      ),
-        icon: BitmapDescriptor.defaultMarker,
-    ),
-    Marker(
-      markerId: MarkerId('3'),
-      position: LatLng(55.797050,12.523720),
-      infoWindow: InfoWindow(
-          title: 'Lyngby Pizza',
-          snippet: 'Lundtoftevej 197,\n2800 Kongens Lyngby'
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ),
     Marker(
       markerId: MarkerId('4'),
       position: LatLng(55.795380,12.536150),
@@ -119,15 +90,6 @@ class _MapScreenState extends State<MapScreen> {
       icon: BitmapDescriptor.defaultMarker,
     ),
     Marker(
-      markerId: MarkerId('6'),
-      position: LatLng(55.768211,12.504030),
-      infoWindow: InfoWindow(
-          title: 'Jernbane Pizza House',
-          snippet: 'Jernbanepladsen 33,\n2800 Kongens Lyngby'
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ),
-    Marker(
       markerId: MarkerId('7'),
       position: LatLng(55.778690,12.510310),
       infoWindow: InfoWindow(
@@ -142,15 +104,6 @@ class _MapScreenState extends State<MapScreen> {
       infoWindow: InfoWindow(
           title: 'La Sosta Pizza & Bøfhus',
           snippet: 'Carlshøjvej 49,\n2800 Kongens Lyngby'
-      ),
-      icon: BitmapDescriptor.defaultMarker,
-    ),
-    Marker(
-      markerId: MarkerId('9'),
-      position: LatLng(55.778220,12.511000),
-      infoWindow: InfoWindow(
-          title: 'Miss Pizza',
-          snippet: 'Baunehøjvej 24,\n2800 Kongens Lyngby'
       ),
       icon: BitmapDescriptor.defaultMarker,
     ),
