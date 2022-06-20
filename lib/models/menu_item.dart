@@ -7,6 +7,7 @@ class MenuItemDetail extends Equatable {
   final String category;
   final String description;
 
+
   MenuItemDetail(
       {this.category,
       this.pizzaria,
@@ -26,7 +27,7 @@ class MenuItemDetail extends Equatable {
 
   static List<MenuItemDetail> menuItems = [
     MenuItemDetail(
-      pizzaria: {
+      pizzaria: const {
         "Pizzaria Luca": 50,
         "Kongens Pizzaria Lyngby": 52,
         "Geppetto's Pizza Lyngby": 56
