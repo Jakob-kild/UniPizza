@@ -23,7 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: AppBar(
+        centerTitle: true,
+       toolbarHeight: 50,
+        title: Text(
+          'UniPizza',style: TextStyle(fontSize: 25),
+        ),
+      )
+      ,
       body: SingleChildScrollView(
           child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -152,33 +159,7 @@ class RestaurantCard extends StatelessWidget {
   }
 }
 
-class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
-  const CustomAppBar({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          leading: IconButton(
-            icon: Icon(Icons.person),
-            onPressed: () {},
-          ),
-          centerTitle: false,
-          title:
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(
-              'CURRENT LOCATION',
-              style:
-                  DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.0),
-            ),
-            Text('Virum, Danmark')
-          ])),
-      body: Container(),
-    );
-  }
 
   @override
   Size get preferredSize => Size.fromHeight(56);
-}
+

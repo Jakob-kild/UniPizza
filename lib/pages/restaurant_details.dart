@@ -90,7 +90,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
               height: 150,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
-                    .collection("testing")
+                    .collection("Saras Pizza")
                     .snapshots(),
                 builder: (
                   context,
