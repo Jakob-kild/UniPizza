@@ -95,11 +95,19 @@ class RestaurantCard extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5.0)),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${restaurant.rating}/5 \u{2B50}',
-                        style: Theme.of(context).textTheme.bodyText1,
+                    alignment: Alignment.center,
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "${restaurant.rating}/5", style: Theme.of(context).textTheme.bodyText1),
+
+                          WidgetSpan(
+                            child: Icon(Icons.star, size: 17, color: Colors.yellow,),
+                          ),
+
+                        ],
                       ),
                     )),
               )
@@ -115,10 +123,10 @@ class RestaurantCard extends StatelessWidget {
 
                   // Text('${restaurant.tags}'),
                   Row(
-                      children: restaurant.tags
+                      children: restaurant.discounts
                           .map(
-                            (tag) => restaurant.tags.indexOf(tag) ==
-                                    restaurant.tags.length - 1
+                            (tag) => restaurant.discounts.indexOf(tag) ==
+                                    restaurant.discounts.length - 1
                                 ? Text(tag,
                                     style:
                                         Theme.of(context).textTheme.bodyText1)

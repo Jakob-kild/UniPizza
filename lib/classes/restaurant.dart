@@ -52,7 +52,7 @@ class Restaurant extends Equatable {
         deliveryTime: 30,
         deliveryFee: 40,
         rating: 4.2,
-        discounts: ["tilbud1", "tilbud2"],
+        discounts: ["Gratis levering til hele DTU"],
         distance: 0.1,
         tlf: "+45 30 30 02 63",
         streetName: "Eremitageparken 315, 2800 Lyngby"),
