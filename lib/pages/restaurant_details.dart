@@ -207,14 +207,52 @@ class RestaurantInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Text(restaurant.name,
-              style: Theme.of(context).textTheme.headline3.copyWith(
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(restaurant.name,
+                  style: Theme.of(context).textTheme.headline3.copyWith(
                     color: Theme.of(context).accentColor,
                   )),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Container(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Tilbud",
+                  style: Theme.of(context).textTheme.headline5, ),
+                SizedBox(height: 5,),
+                Text("- Gratis levering til DTU \n- Gratis drikkevarer for over 300kr",
+                    style: Theme.of(context).textTheme.bodyText1),
+                SizedBox(height: 10,),
+                Text("Rating",
+                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(height: 5,),
+                //Rating widget
+                SizedBox(height: 10,),
+                Text("Leveringstid",
+                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(height: 5,),
+                Text("20-35 minutter",
+                    style: Theme.of(context).textTheme.bodyText1),
+                SizedBox(height: 10,),
+                Text("Kontakt",
+                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(height: 5,),
+                Text("+45 92 15 69 69 \nGammel Jernbanevej 20, 2800 Kongens Lyngby",
+                    style: Theme.of(context).textTheme.bodyText1),
+              ],
+            ),
+          ),
+
+
+
         ],
       ),
     );
