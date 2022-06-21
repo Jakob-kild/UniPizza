@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class MenuItemDetail extends Equatable {
+class MenuItemDetail {
   final int id;
   final int restaurantId;
   final String name;
@@ -8,24 +6,18 @@ class MenuItemDetail extends Equatable {
   final String description;
   final double price;
 
-
-  MenuItemDetail({
-    this.category,
-    this.id,
-    this.restaurantId,
-    this.name,
-    this.description,
-    this.price});
+  MenuItemDetail(
+      {this.category,
+      this.id,
+      this.restaurantId,
+      this.name,
+      this.description,
+      this.price});
 
   @override
   // TODO: implement props
-  List<Object> get props => [
-    id,
-    category,
-    restaurantId,
-    name,
-    description,
-    price];
+  List<Object> get props =>
+      [id, category, restaurantId, name, description, price];
 
   static List<MenuItemDetail> menuItems = [
     MenuItemDetail(
@@ -169,7 +161,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 1,
       name: 'Okse Pizza',
       category: 'Pizza',
-      description: 'Tomat, ost, kødstrimler, champignon, gorgonzola, løg, jalapenos',
+      description:
+          'Tomat, ost, kødstrimler, champignon, gorgonzola, løg, jalapenos',
       price: 95.00,
     ),
     MenuItemDetail(
@@ -225,7 +218,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 1,
       name: 'Torino',
       category: 'Vegetar',
-      description: 'Tomat, ost, peberfrugt, mozeralla, cherrytomat, pesto, basilikum',
+      description:
+          'Tomat, ost, peberfrugt, mozeralla, cherrytomat, pesto, basilikum',
       price: 95.00,
     ),
     MenuItemDetail(
@@ -260,7 +254,6 @@ class MenuItemDetail extends Equatable {
       description: 'Coca Cola, Faxe Kondi, Fanta',
       price: 35.00,
     ),
-
     MenuItemDetail(
       id: 1,
       restaurantId: 2,
@@ -410,7 +403,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 2,
       name: 'Pizza 22',
       category: 'Pizza',
-      description: 'Tomat, ost, hakket oksekød, pepperoni, bacon, chili, hvidløg',
+      description:
+          'Tomat, ost, hakket oksekød, pepperoni, bacon, chili, hvidløg',
       price: 83.00,
     ),
     MenuItemDetail(
@@ -418,7 +412,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 2,
       name: 'Pizza 23',
       category: 'Pizza',
-      description: 'Tomat, ost, hakket oksekød, pepperoni, jalapenos, gorgonzola',
+      description:
+          'Tomat, ost, hakket oksekød, pepperoni, jalapenos, gorgonzola',
       price: 83.00,
     ),
     MenuItemDetail(
@@ -450,7 +445,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 2,
       name: 'Pizza 54',
       category: 'Pizza',
-      description: 'Tomat, ost, marineret svinemørbrad, løg, champignon, gorgonzola',
+      description:
+          'Tomat, ost, marineret svinemørbrad, løg, champignon, gorgonzola',
       price: 87.00,
     ),
     MenuItemDetail(
@@ -458,7 +454,8 @@ class MenuItemDetail extends Equatable {
       restaurantId: 2,
       name: 'Pizza 144',
       category: 'Pizza',
-      description: 'Tomat, ost, kylling, kartoffel, bacon, friske tomater, rosmarin',
+      description:
+          'Tomat, ost, kylling, kartoffel, bacon, friske tomater, rosmarin',
       price: 77.00,
     ),
     MenuItemDetail(
@@ -501,7 +498,6 @@ class MenuItemDetail extends Equatable {
       description: 'Tomat, ost, shawarma, champignon, løg, chili, bernaise',
       price: 77.00,
     ),
-
     MenuItemDetail(
       id: 28,
       restaurantId: 2,
@@ -542,7 +538,6 @@ class MenuItemDetail extends Equatable {
       description: 'Tomat, ost, champignon, artiskok, løg, oliven og paprika',
       price: 77.00,
     ),
-
     MenuItemDetail(
       id: 33,
       restaurantId: 2,
@@ -567,7 +562,6 @@ class MenuItemDetail extends Equatable {
       description: 'salat, dressing, tomat, falafel',
       price: 63.00,
     ),
-
     MenuItemDetail(
       id: 36,
       restaurantId: 2,
@@ -592,7 +586,6 @@ class MenuItemDetail extends Equatable {
       description: 'Tuborg',
       price: 20.00,
     ),
-
     MenuItemDetail(
       id: 1,
       restaurantId: 3,
@@ -806,10 +799,10 @@ class MenuItemDetail extends Equatable {
       restaurantId: 3,
       name: 'Vegetarania',
       category: 'Vegetar',
-      description: 'Tomat, ost, champignon, løg, paprika, ananas, asparges, spinat',
+      description:
+          'Tomat, ost, champignon, løg, paprika, ananas, asparges, spinat',
       price: 72.00,
     ),
-
     MenuItemDetail(
       id: 1,
       restaurantId: 4,
@@ -1066,7 +1059,6 @@ class MenuItemDetail extends Equatable {
       description: 'Coca Cola, Faxe Kondi, Fanta',
       price: 35.00,
     ),
-
     MenuItemDetail(
       id: 1,
       restaurantId: 5,
@@ -1323,6 +1315,5 @@ class MenuItemDetail extends Equatable {
       description: 'Tuborg',
       price: 20.00,
     ),
-
   ];
 }

@@ -15,11 +15,11 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
+
   final pages = [
     MapScreen(),
     menuScreen(),
     search(),
-
   ];
 
   @override
@@ -28,11 +28,8 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         centerTitle: true,
         toolbarHeight: 50,
-        title: Text(
-          'UniPizza',style: TextStyle(fontSize: 25),
-        ),
-      )
-      ,
+        title: const Text('UniPizza', style: TextStyle(fontSize: 25)),
+      ),
       body: pages.elementAt(_selectedIndex),
       bottomNavigationBar: CustomNavigationBar(),
     );
@@ -44,38 +41,30 @@ class _HomeScreenState extends State<HomeScreen> {
       selectedItemColor: Colors.amber[800],
       onTap: _onItemTapped,
       items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.location_on),
-          label: 'Map'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home'
-        ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search'
-        )
+        BottomNavigationBarItem(icon: Icon(Icons.location_on), label: 'Map'),
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search')
       ],
     );
   }
-  void _onItemTapped(int index){
+
+  void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
 }
 
-class RestaurantCard extends StatelessWidget {
-  final Restaurant restaurant;
+class PizzariaCard extends StatelessWidget {
+  final Pizzaria pizzaria;
 
-  const RestaurantCard({Key key, this.restaurant}) : super(key: key);
+  const PizzariaCard({Key key, this.pizzaria}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/home', arguments: restaurant);
+        Navigator.pushNamed(context, '/home', arguments: pizzaria);
       },
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -89,7 +78,7 @@ class RestaurantCard extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5.0),
                     image: DecorationImage(
-                      image: NetworkImage(restaurant.imageUrl),
+                      image: NetworkImage(pizzaria.imageUrl),
                       fit: BoxFit.cover,
                     ),
                   )),
@@ -105,7 +94,7 @@ class RestaurantCard extends StatelessWidget {
                     child: Align(
                       alignment: Alignment.center,
                       child: Text(
-                        '${restaurant.rating}/5 \u{2B50}',
+                        '${pizzaria.rating}/5 \u{2B50}',
                         style: Theme.of(context).textTheme.bodyText1,
                       ),
                     )),
@@ -116,16 +105,16 @@ class RestaurantCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(restaurant.name,
+                  Text(pizzaria.name,
                       style: Theme.of(context).textTheme.headline5),
                   SizedBox(height: 5),
 
                   // Text('${restaurant.tags}'),
                   Row(
-                      children: restaurant.tags
+                      children: pizzaria.tags
                           .map(
-                            (tag) => restaurant.tags.indexOf(tag) ==
-                                    restaurant.tags.length - 1
+                            (tag) => pizzaria.tags.indexOf(tag) ==
+                                    pizzaria.tags.length - 1
                                 ? Text(tag,
                                     style:
                                         Theme.of(context).textTheme.bodyText1)
@@ -136,7 +125,7 @@ class RestaurantCard extends StatelessWidget {
                           .toList()),
                   SizedBox(height: 5),
                   Text(
-                      '${restaurant.distance}km - ${restaurant.deliveryFee.toInt()} kr levering',
+                      '${pizzaria.distance}km - ${pizzaria.deliveryFee.toInt()} kr levering',
                       style: Theme.of(context).textTheme.bodyText1)
                 ],
               ),
@@ -148,10 +137,8 @@ class RestaurantCard extends StatelessWidget {
   }
 }
 
-
-  @override
-  Size get preferredSize => Size.fromHeight(56);
-
+@override
+Size get preferredSize => Size.fromHeight(56);
 
 class menuScreen extends StatefulWidget {
   @override
@@ -178,9 +165,10 @@ class _menuScreenState extends State<menuScreen> {
           ListView.builder(
             shrinkWrap: true,
             physics: NeverScrollableScrollPhysics(),
-            itemCount: Restaurant.restaurants.length,
+            itemCount: Pizzaria.restaurants.length,
             itemBuilder: (context, index) {
-              return RestaurantCard(restaurant: Restaurant.getSortedResturants()[index]);
+              return PizzariaCard(
+                  pizzaria: Pizzaria.getSortedResturants()[index]);
             },
           ),
         ],

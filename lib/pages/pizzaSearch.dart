@@ -10,6 +10,7 @@ class _searchState extends State<search> {
   final myController = TextEditingController();
 
   List<MenuItemDetail> pizzas = MenuItemDetail.menuItems;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,8 @@ class _searchState extends State<search> {
                 itemBuilder: (context, index) {
                   final pizza = pizzas[index];
                   return ListTile(
-                    title: Text("${returnResturauntName(pizza.restaurantId)} - ${pizza.name} : ${pizza.price}kr \n ${pizza.description}" ),
+                    title: Text(
+                        "${returnResturauntName(pizza.restaurantId)} - ${pizza.name} : ${pizza.price}kr \n ${pizza.description}"),
                   );
                 },
               ),
@@ -60,7 +62,7 @@ class _searchState extends State<search> {
       final input = key.toLowerCase();
       return desc.contains(input);
     }).toList();
-    suggestions.sort((a,b) => a.price.compareTo(b.price));
+    suggestions.sort((a, b) => a.price.compareTo(b.price));
     setState(() => pizzas = suggestions);
   }
 
@@ -79,6 +81,4 @@ class _searchState extends State<search> {
       return "Error in ID";
     }
   }
-
 }
-

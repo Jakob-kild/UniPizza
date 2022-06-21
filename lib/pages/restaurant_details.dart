@@ -18,7 +18,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final restaurant = ModalRoute.of(context).settings.arguments as Restaurant;
+    final restaurant = ModalRoute.of(context).settings.arguments as Pizzaria;
     final myController = TextEditingController();
 
     return Scaffold(
@@ -26,25 +26,6 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                shape: RoundedRectangleBorder(),
-                primary: Theme.of(context).colorScheme.secondary,
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/basket');
-              },
-              child: Text('Basket'),
-            ),
-          ],
-        )),
       ),
       extendBodyBehindAppBar: true,
       body: SingleChildScrollView(
@@ -64,7 +45,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                     fit: BoxFit.cover),
               ),
             ),
-            RestaurantInformation(restaurant: restaurant),
+            PizzariaInformation(pizzaria: restaurant),
             Padding(
               padding: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
               child: TextFormField(
@@ -139,8 +120,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
   }
 }
 
-Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
-
+Widget _buildMenuItems(Pizzaria restaurant, BuildContext context, int index) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -173,8 +153,7 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
                             mainAxisAlignment: MainAxisAlignment.end,
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(
-                                  '${menuItem.price.toInt()} kr',
+                              Text('${menuItem.price.toInt()} kr',
                                   style: Theme.of(context).textTheme.headline5),
                             ],
                           ),
@@ -190,16 +169,15 @@ Widget _buildMenuItems(Restaurant restaurant, BuildContext context, int index) {
   );
 }
 
-class RestaurantInformation extends StatelessWidget {
-  final Restaurant restaurant;
+class PizzariaInformation extends StatelessWidget {
+  final Pizzaria pizzaria;
 
+  const PizzariaInformation({Key key, this.pizzaria}) : super(key: key);
 
-  const RestaurantInformation({Key key, this.restaurant}) : super(key: key);
-
-  String getDiscountString(Restaurant restaurant){
+  String getDiscountString(Pizzaria restaurant) {
     var builder = StringBuffer();
 
-    for (String n in restaurant.discounts){
+    for (String n in restaurant.discounts) {
       builder.write("- " + n + "\n");
     }
 
@@ -216,49 +194,66 @@ class RestaurantInformation extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(restaurant.name,
+              Text(pizzaria.name,
                   style: Theme.of(context).textTheme.headline3.copyWith(
-                    color: Theme.of(context).accentColor,
-                  )),
+                        color: Theme.of(context).accentColor,
+                      )),
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Container(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Tilbud",
-                  style: Theme.of(context).textTheme.headline5, ),
-                SizedBox(height: 5,),
-                Text(getDiscountString(restaurant),
+                Text(
+                  "Tilbud",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(getDiscountString(pizzaria),
                     style: Theme.of(context).textTheme.bodyText1),
-                Text("Rating",
-                  style: Theme.of(context).textTheme.headline5,),
-                SizedBox(height: 5,),
+                Text(
+                  "Rating",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 //Rating widget
-                Text("${restaurant.rating}/5.0"),
-                SizedBox(height: 10,),
-                Text("Leveringstid",
-                  style: Theme.of(context).textTheme.headline5,),
-                SizedBox(height: 5,),
+                Text("${pizzaria.rating}/5.0"),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Leveringstid",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Text("10-15 minutter",
                     style: Theme.of(context).textTheme.bodyText1),
-                SizedBox(height: 10,),
-                Text("Kontakt",
-                  style: Theme.of(context).textTheme.headline5,),
-                SizedBox(height: 5,),
-                Text("${restaurant.tlf} \n${restaurant.streetName}",
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Kontakt",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("${pizzaria.tlf} \n${pizzaria.streetName}",
                     style: Theme.of(context).textTheme.bodyText1),
               ],
             ),
           ),
-
-
-
         ],
       ),
     );
   }
 }
-
-
