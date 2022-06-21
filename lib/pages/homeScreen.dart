@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   BottomNavigationBar CustomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber[800],
+      selectedItemColor: Colors.red[800],
       onTap: _onItemTapped,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(icon: Icon(Icons.location_on), label: 'Map'),

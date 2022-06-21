@@ -23,7 +23,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
     final myController = TextEditingController();
 
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -47,26 +47,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
               ),
             ),
             PizzariaInformation(pizzaria: restaurant),
-            Padding(
-              padding: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
-              child: TextFormField(
-                validator: (val) => val.isEmpty ? 'Test mand' : null,
-                onChanged: (val) {},
-                controller: myController,
-                decoration: const InputDecoration(
-                  labelText: 'Kommenter pizzariaet',
-                ),
-              ),
-            ),
-            OutlinedButton(
-                onPressed: () {
-                  FirebaseFirestore.instance
-                      .collection("${restaurant.name}")
-                      .add({"comment": myController.text});
-                  myController.clear();
-                  FocusManager.instance.primaryFocus.unfocus();
-                },
-                child: Icon(Icons.send)),
+
             Container(
               width: 350,
               height: 150,
@@ -152,7 +133,7 @@ Widget _buildMenuItems(Pizzaria restaurant, BuildContext context, int index) {
           style: Theme.of(context)
               .textTheme
               .headline3
-              .copyWith(color: Theme.of(context).accentColor),
+              .copyWith(color: Colors.red[800]),
         ),
       ),
       Column(
@@ -194,7 +175,7 @@ class PizzariaInformation extends StatelessWidget {
   final Pizzaria pizzaria;
   num rating;
 
-  const PizzariaInformation({Key key, this.pizzaria}) : super(key: key);
+  PizzariaInformation({Key key, this.pizzaria}) : super(key: key);
 
   String getDiscountString(Pizzaria restaurant) {
     var builder = StringBuffer();
@@ -217,9 +198,10 @@ class PizzariaInformation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(pizzaria.name,
-                  style: Theme.of(context).textTheme.headline3.copyWith(
-                        color: Theme.of(context).accentColor,
-                      )),
+                  style: Theme.of(context).textTheme.headline2.copyWith(
+                    color: Colors.red[800]
+                  )
+                      ),
             ],
           ),
           SizedBox(
