@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../classes/restaurant.dart';
-import '../models/menu_item.dart';
+
+
 
 class RestaurantDetailsScreen extends StatefulWidget {
   @override
@@ -67,7 +68,7 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                 },
                 child: Icon(Icons.send)),
             Container(
-              width: 370,
+              width: 350,
               height: 150,
               child: StreamBuilder(
                 stream: FirebaseFirestore.instance
@@ -104,6 +105,26 @@ class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
                 },
               ),
             ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(30.0, 5.0, 30.0, 5.0),
+              child: TextFormField(
+                validator: (val) => val.isEmpty ? 'Test mand' : null,
+                onChanged: (val) {},
+                controller: myController,
+                decoration: const InputDecoration(
+                  labelText: 'Kommenter pizzariaet',
+                ),
+              ),
+            ),
+            OutlinedButton(
+                onPressed: () {
+                  FirebaseFirestore.instance
+                      .collection("${restaurant.name}")
+                      .add({"comment": myController.text});
+                  myController.clear();
+                  FocusManager.instance.primaryFocus.unfocus();
+                },
+                child: Icon(Icons.send)),
             ListView.builder(
               padding: EdgeInsets.zero,
               physics: NeverScrollableScrollPhysics(),
@@ -171,6 +192,7 @@ Widget _buildMenuItems(Pizzaria restaurant, BuildContext context, int index) {
 
 class PizzariaInformation extends StatelessWidget {
   final Pizzaria pizzaria;
+  num rating;
 
   const PizzariaInformation({Key key, this.pizzaria}) : super(key: key);
 
@@ -216,25 +238,14 @@ class PizzariaInformation extends StatelessWidget {
                 ),
                 Text(getDiscountString(pizzaria),
                     style: Theme.of(context).textTheme.bodyText1),
-                Text(
-                  "Rating",
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
-                //Rating widget
-                Text("${pizzaria.rating}/5.0"),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "Leveringstid",
-                  style: Theme.of(context).textTheme.headline5,
-                ),
-                SizedBox(
-                  height: 5,
-                ),
+                Text("Rating",
+                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(height: 5,),
+                Text("${pizzaria.rating}/5.0", style: Theme.of(context).textTheme.bodyText1,),
+                SizedBox(height: 10,),
+                Text("Leveringstid",
+                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(height: 5,),
                 Text("10-15 minutter",
                     style: Theme.of(context).textTheme.bodyText1),
                 SizedBox(
@@ -249,11 +260,56 @@ class PizzariaInformation extends StatelessWidget {
                 ),
                 Text("${pizzaria.tlf} \n${pizzaria.streetName}",
                     style: Theme.of(context).textTheme.bodyText1),
+                SizedBox(height: 20,),
+                Text("Rate pizzriaet",
+                  style: Theme.of(context).textTheme.headline5,),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    RatingBar.builder(
+                      glow: false,
+                      minRating: 1,
+                      initialRating: 3,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemCount: 5,
+                      itemSize: 35,
+                      itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                      itemBuilder: (context, _) => Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (rating) {
+                        this.rating = rating;
+                      },
+                    ),
+                    OutlinedButton(
+                        onPressed: () {
+                          FirebaseFirestore.instance
+                          .collection("${pizzaria.name}")
+                          .doc("rating").
+                          update({
+                            "numberOfRatings": 22,
+                            "sumOfRatings": rating
+                          });
+                        },
+                        child: Text("Rate", style:
+                        TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.normal))),
+                  ],
+                ),
               ],
             ),
           ),
+
+
+
         ],
       ),
     );
   }
 }
+
+

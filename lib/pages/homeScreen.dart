@@ -20,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     MapScreen(),
     menuScreen(),
     search(),
+
   ];
 
   @override
@@ -91,11 +92,19 @@ class PizzariaCard extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(5.0)),
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: Text(
-                        '${pizzaria.rating}/5 \u{2B50}',
-                        style: Theme.of(context).textTheme.bodyText1,
+                    alignment: Alignment.center,
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: "${pizzaria.rating}/5", style: Theme.of(context).textTheme.bodyText1),
+
+                          WidgetSpan(
+                            child: Icon(Icons.star, size: 17, color: Colors.yellow,),
+                          ),
+
+                        ],
                       ),
                     )),
               )
@@ -111,10 +120,10 @@ class PizzariaCard extends StatelessWidget {
 
                   // Text('${restaurant.tags}'),
                   Row(
-                      children: pizzaria.tags
+                      children: pizzaria.discounts
                           .map(
-                            (tag) => pizzaria.tags.indexOf(tag) ==
-                                    pizzaria.tags.length - 1
+                            (tag) => pizzaria.discounts.indexOf(tag) ==
+                                    pizzaria.discounts.length - 1
                                 ? Text(tag,
                                     style:
                                         Theme.of(context).textTheme.bodyText1)
