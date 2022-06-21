@@ -12,7 +12,7 @@ void main() async {
   await Firebase.initializeApp();
   runApp(MaterialApp(debugShowCheckedModeBanner: false,theme: theme(), initialRoute: '/', routes: {
     '/': (context) => HomeScreen(),
-    '/home': (context) => RestaurantDetailsScreen(),
+    '/home': (context) => PizzariaDetailsScreen(),
     '/map' : (context) => MapScreen(),
   },));
 }

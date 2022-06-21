@@ -5,13 +5,13 @@ import '../classes/restaurant.dart';
 
 
 
-class RestaurantDetailsScreen extends StatefulWidget {
+class PizzariaDetailsScreen extends StatefulWidget {
   @override
-  _RestaurantDetailsScreenState createState() =>
-      _RestaurantDetailsScreenState();
+  _PizzariaDetailsScreenState createState() =>
+      _PizzariaDetailsScreenState();
 }
 
-class _RestaurantDetailsScreenState extends State<RestaurantDetailsScreen> {
+class _PizzariaDetailsScreenState extends State<PizzariaDetailsScreen> {
   @override
   void initState() {
     super.initState();
