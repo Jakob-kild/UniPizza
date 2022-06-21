@@ -20,7 +20,6 @@ class _HomeScreenState extends State<HomeScreen> {
     MapScreen(),
     menuScreen(),
     search(),
-
   ];
 
   @override
@@ -98,12 +97,15 @@ class PizzariaCard extends StatelessWidget {
                       text: TextSpan(
                         children: [
                           TextSpan(
-                            text: "${pizzaria.rating}/5", style: Theme.of(context).textTheme.bodyText1),
-
+                              text: "${pizzaria.rating}/5",
+                              style: Theme.of(context).textTheme.bodyText1),
                           WidgetSpan(
-                            child: Icon(Icons.star, size: 17, color: Colors.yellow,),
+                            child: Icon(
+                              Icons.star,
+                              size: 17,
+                              color: Colors.yellow,
+                            ),
                           ),
-
                         ],
                       ),
                     )),

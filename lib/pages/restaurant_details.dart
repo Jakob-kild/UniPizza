@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../classes/restaurant.dart';
 
-
-
 class PizzariaDetailsScreen extends StatefulWidget {
   @override
-  _PizzariaDetailsScreenState createState() =>
-      _PizzariaDetailsScreenState();
+  _PizzariaDetailsScreenState createState() => _PizzariaDetailsScreenState();
 }
 
 class _PizzariaDetailsScreenState extends State<PizzariaDetailsScreen> {
@@ -47,7 +44,6 @@ class _PizzariaDetailsScreenState extends State<PizzariaDetailsScreen> {
               ),
             ),
             PizzariaInformation(pizzaria: restaurant),
-
             Container(
               width: 350,
               height: 150,
@@ -198,10 +194,10 @@ class PizzariaInformation extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(pizzaria.name,
-                  style: Theme.of(context).textTheme.headline2.copyWith(
-                    color: Colors.red[800]
-                  )
-                      ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline2
+                      .copyWith(color: Colors.red[800])),
             ],
           ),
           SizedBox(
@@ -220,14 +216,27 @@ class PizzariaInformation extends StatelessWidget {
                 ),
                 Text(getDiscountString(pizzaria),
                     style: Theme.of(context).textTheme.bodyText1),
-                Text("Rating",
-                  style: Theme.of(context).textTheme.headline5,),
-                SizedBox(height: 5,),
-                Text("${pizzaria.rating}/5.0", style: Theme.of(context).textTheme.bodyText1,),
-                SizedBox(height: 10,),
-                Text("Leveringstid",
-                  style: Theme.of(context).textTheme.headline5,),
-                SizedBox(height: 5,),
+                Text(
+                  "Rating",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  "${pizzaria.rating}/5.0",
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Leveringstid",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 Text("10-15 minutter",
                     style: Theme.of(context).textTheme.bodyText1),
                 SizedBox(
@@ -242,9 +251,13 @@ class PizzariaInformation extends StatelessWidget {
                 ),
                 Text("${pizzaria.tlf} \n${pizzaria.streetName}",
                     style: Theme.of(context).textTheme.bodyText1),
-                SizedBox(height: 20,),
-                Text("Rate pizzriaet",
-                  style: Theme.of(context).textTheme.headline5,),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Rate pizzriaet",
+                  style: Theme.of(context).textTheme.headline5,
+                ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -268,30 +281,25 @@ class PizzariaInformation extends StatelessWidget {
                     OutlinedButton(
                         onPressed: () {
                           FirebaseFirestore.instance
-                          .collection("${pizzaria.name}")
-                          .doc("rating").
-                          update({
+                              .collection("${pizzaria.name}")
+                              .doc("rating")
+                              .update({
                             "numberOfRatings": 22,
                             "sumOfRatings": rating
                           });
                         },
-                        child: Text("Rate", style:
-                        TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.normal))),
+                        child: Text("Rate",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal))),
                   ],
                 ),
               ],
             ),
           ),
-
-
-
         ],
       ),
     );
   }
 }
-
-

@@ -8,11 +8,17 @@ import 'package:flutter/services.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp,DeviceOrientation.portraitDown]);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   await Firebase.initializeApp();
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,theme: theme(), initialRoute: '/', routes: {
-    '/': (context) => HomeScreen(),
-    '/home': (context) => PizzariaDetailsScreen(),
-    '/map' : (context) => MapScreen(),
-  },));
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    theme: theme(),
+    initialRoute: '/',
+    routes: {
+      '/': (context) => HomeScreen(),
+      '/home': (context) => PizzariaDetailsScreen(),
+      '/map': (context) => MapScreen(),
+    },
+  ));
 }

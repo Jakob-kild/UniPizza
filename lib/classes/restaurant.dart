@@ -103,7 +103,10 @@ class Pizzaria {
         deliveryTime: 25,
         deliveryFee: 45,
         distance: 1.04,
-        discounts: ["Fri levering over 100kr", "Gratis 1½ sodavand ved køb over 250kr"],
+        discounts: [
+          "Fri levering over 100kr",
+          "Gratis 1½ sodavand ved køb over 250kr"
+        ],
         rating: 4.9,
         tlf: "+45 45 83 28 00",
         streetName: "Sorgenfrigårdsvej 80B, 2800 Lyngby"),
