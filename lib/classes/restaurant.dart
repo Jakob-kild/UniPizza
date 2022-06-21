@@ -1,12 +1,11 @@
-import 'package:equatable/equatable.dart';
 import '../models/menu_item.dart';
 
-class Restaurant extends Equatable {
+class Restaurant {
   final int id, deliveryTime;
   final String imageUrl, name, tlf, streetName;
   final List<String> tags, discounts;
   final List<MenuItemDetail> menuItems;
-  final double deliveryFee, distance, rating;
+  final double deliveryFee, rating, distance;
 
   Restaurant(
       {this.id,
@@ -53,7 +52,7 @@ class Restaurant extends Equatable {
         deliveryFee: 40,
         rating: 4.2,
         discounts: ["Gratis levering til hele DTU"],
-        distance: 0.1,
+        distance: 1.42,
         tlf: "+45 30 30 02 63",
         streetName: "Eremitageparken 315, 2800 Lyngby"),
     Restaurant(
@@ -67,7 +66,7 @@ class Restaurant extends Equatable {
         deliveryFee: 25,
         rating: 3.7,
         discounts: ["Gratis levering til hele DTU"],
-        distance: 0.1,
+        distance: 1.41,
         tlf: "+45 45 88 66 93",
         streetName: "Egegårdsvej 1, 2800 Lyngby"),
     Restaurant(
@@ -79,7 +78,7 @@ class Restaurant extends Equatable {
         menuItems: MenuItemDetail.menuItems.where((menuItem) => menuItem.restaurantId ==3).toList(),
         deliveryTime: 25,
         deliveryFee: 32,
-        distance: 0.1,
+        distance: 0.87,
         rating: 3.9,
         discounts: ["Gratis levering til hele DTU over 100kr"],
         tlf: "+45 45 87 06 16",
@@ -93,7 +92,7 @@ class Restaurant extends Equatable {
         menuItems: MenuItemDetail.menuItems.where((menuItem) => menuItem.restaurantId ==4).toList(),
         deliveryTime: 25,
         deliveryFee: 45,
-        distance: 0.1,
+        distance: 1.04,
         discounts: ["Fri levering over 100kr", "Gratis 1½ sodavand ved køb over 250kr"],
         rating: 4.9,
         tlf: "+45 45 83 28 00",
@@ -107,7 +106,7 @@ class Restaurant extends Equatable {
         menuItems: MenuItemDetail.menuItems.where((menuItem) => menuItem.restaurantId ==5).toList(),
         deliveryTime: 25,
         deliveryFee: 25,
-        distance: 0.1,
+        distance: 1.20,
         discounts: ["10% for studerende", "Fri levering over 250kr"],
         rating: 3.6,
         tlf: "+45 45 88 68 11",

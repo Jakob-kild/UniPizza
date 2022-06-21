@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -9,21 +10,34 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  String _latitude;
-  String _longitude;
+  var address;
+  List<double> distances = new List();
+  double _latitude, _longitude;
 
-  double calculateDistance(lat1, lon1, lat2, lon2){
+  void calculateDistance(){
+    List<double> lat = [55.795380,55.797539,55.778690,55.778570,55.795680];
+    List<double> lon = [12.536150,12.513710,12.510310,12.515550,12.528540];
+
     var p = 0.017453292519943295;
     var c = cos;
-    var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2;
-    return 12742 * asin(sqrt(a));
+
+    for(int i = 0; i<lat.length; i++){
+      var a = 0.5 - c((lat[i] - _latitude) * p)/2 + c(_latitude * p) * c(lat[i] * p) * (1 - c((lon[i] - _longitude) * p))/2;
+      var res = 12742 * asin(sqrt(a));
+      distances.add(double.parse((res).toStringAsFixed(2)));
+    }
+    print(distances.toString() + "-----------------------------------------------");
   }
 
   Future<void> _updatePosition() async{
     Position position = await _determinePosition();
+    List<Placemark> pm = await placemarkFromCoordinates(position.latitude, position.longitude);
     setState(() {
-      _latitude = position.latitude.toString();
-      _longitude = position.longitude.toString();
+      _latitude = position.latitude;
+      _longitude = position.longitude;
+      address = pm[0].locality;
+      calculateDistance();
+
     });
   }
 
@@ -69,6 +83,7 @@ class _MapScreenState extends State<MapScreen> {
 
   GoogleMapController _googleMapController;
 
+
   List<Marker> _marker =[];
   static const List<Marker> _list = [
     Marker(
@@ -76,7 +91,7 @@ class _MapScreenState extends State<MapScreen> {
       position: LatLng(55.795380,12.536150),
       infoWindow: InfoWindow(
           title: 'La Vida Stenovns Pizza',
-          snippet: 'Eremitageparken 315,\n2800 Kongens Lyngby'
+          snippet: 'Eremitageparken 315,\n2800 Kongens Lyngby',
       ),
       icon: BitmapDescriptor.defaultMarker,
     ),
@@ -128,6 +143,9 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text("${address}"),
+      ),
       body: GoogleMap(
         zoomControlsEnabled: true,
         myLocationButtonEnabled: false,
@@ -151,9 +169,10 @@ class _MapScreenState extends State<MapScreen> {
                 splashColor: Colors.orange,
                 enableFeedback: true,
                 hoverColor: Colors.orange,
-                onPressed: () => _googleMapController.animateCamera(
-                CameraUpdate.newCameraPosition(_initalCameraPosition),
-                ),
+                onPressed: () { _googleMapController.animateCamera(
+                CameraUpdate.newCameraPosition(_initalCameraPosition));
+                    },
+
                 child: const Icon(Icons.center_focus_strong),
               ),
           ),
