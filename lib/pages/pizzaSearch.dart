@@ -14,38 +14,54 @@ class _searchState extends State<search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    backgroundColor: Colors.white,
       body: Center(
         child: Column(
           children: [
-            const Text(
-              "Pizza Search",
-              style: TextStyle(
-                fontSize: 45.0,
-                fontWeight: FontWeight.bold,
+            SizedBox(height: 5,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                child: TextField(
+                  controller: myController,
+                  onChanged: searchForKey,
+                  decoration: InputDecoration(
+                      prefixIcon: const Icon(Icons.search),
+                      hintText: 'Toppings',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Colors.amber,
+                          ))),
+                ),
               ),
             ),
-            Container(
-              child: TextField(
-                controller: myController,
-                onChanged: searchForKey,
-                decoration: InputDecoration(
-                    prefixIcon: const Icon(Icons.search),
-                    hintText: 'Toppings',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: const BorderSide(
-                          color: Colors.amber,
-                        ))),
-              ),
-            ),
+            SizedBox(height: 5,),
             Expanded(
               child: ListView.builder(
                 itemCount: pizzas.length,
                 itemBuilder: (context, index) {
                   final pizza = pizzas[index];
-                  return ListTile(
-                    title: Text(
-                        "${returnResturauntName(pizza.restaurantId)} - ${pizza.name} : ${pizza.price}kr \n ${pizza.description}"),
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ListTile(
+                        dense: true,
+                        contentPadding: EdgeInsets.symmetric(horizontal: 15,vertical: 5),
+                        title: Text(
+                                "${returnResturauntName(pizza.restaurantId)} - ${pizza.name}",
+                            style: Theme.of(context).textTheme.headline5) ,
+                        subtitle: Text("${pizza.description}",style: Theme.of(context).textTheme.bodyText1),
+                        trailing: Row(mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text('${pizza.price.toInt()} kr',
+                                style: Theme.of(context).textTheme.headline5),
+                          ],),
+
+                      ),
+                      Divider(height: 2,)
+                    ],
                   );
                 },
               ),
